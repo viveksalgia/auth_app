@@ -1,6 +1,6 @@
-import json
 from flask import Flask, request, make_response
 from api_routes.validate_creds import val_cred_api, register_user, init_session, set_params
+
 
 app = Flask(__name__)
 
@@ -68,3 +68,10 @@ def session_params():
             return make_response('Unable to authenticate', 401)
     else:
         return make_response('Unable to authenticate', 401)
+
+@app.route('/')
+def root():
+    return '<!DOCTYPE html> <html> <head> <title>Networx API Server</title> </head> <body> <div> <p>Welcome to the API Server</p> </div> </body> </html>'
+
+if __name__ == '__main__':
+    app.run(host='0.0.0.0')
